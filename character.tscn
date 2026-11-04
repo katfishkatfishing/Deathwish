@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b8yr1wprk2qah"]
+
+[node name="Character" type="Node2D" unique_id=1609324088]
+position = Vector2(125, 108)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1832381031]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=293624744]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1672568772]
+
+[node name="Hitbox" type="Area2D" parent="CharacterBody2D" unique_id=1181329590]
+
+[node name="WeaponHitbox" type="Area2D" parent="CharacterBody2D" unique_id=662010119]
