@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://c1ag7qpsli2np" path="res://player/scripts/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://cgepdvl2o88bw" path="res://player/states/player_states_idle.gd" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://cbfde3s8ds3fv" path="res://player/states/player_state_run.gd" id="3_yw30f"]
+[ext_resource type="Script" uid="uid://bn2y73e4nnlv1" path="res://player/states/player_state_jump.gd" id="4_yw30f"]
+[ext_resource type="Script" uid="uid://dfqa4sgorvh51" path="res://player/states/player_state_fall.gd" id="5_qjkh3"]
+[ext_resource type="Script" uid="uid://cq4rg6ksqbx83" path="res://player/states/player_state_crouch.gd" id="6_g6k8r"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g4v7s"]
 size = Vector2(18, 48)
@@ -10,21 +13,58 @@ size = Vector2(18, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(16, 46)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjkh3"]
+size = Vector2(16, 30)
+
 [node name="Player" type="CharacterBody2D" unique_id=1882587580]
+collision_layer = 0
+collision_mask = 3
 script = ExtResource("1_oul6g")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=768253590]
 position = Vector2(0, -24)
 texture = SubResource("PlaceholderTexture2D_g4v7s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1483018582]
+[node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=1483018582]
 position = Vector2(0, -23)
 shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CollisionCrouch" type="CollisionShape2D" parent="." unique_id=473568724]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_qjkh3")
+disabled = true
 
 [node name="States" type="Node2D" parent="." unique_id=2019717742]
 
 [node name="Idle" type="Node2D" parent="States" unique_id=594893568]
+unique_name_in_owner = true
 script = ExtResource("2_g1dw6")
 
 [node name="Run" type="Node2D" parent="States" unique_id=1180863821]
+unique_name_in_owner = true
 script = ExtResource("3_yw30f")
+
+[node name="Jump" type="Node2D" parent="States" unique_id=1077089980]
+unique_name_in_owner = true
+script = ExtResource("4_yw30f")
+
+[node name="Fall" type="Node2D" parent="States" unique_id=1898338046]
+unique_name_in_owner = true
+script = ExtResource("5_qjkh3")
+
+[node name="Crouch" type="Node2D" parent="States" unique_id=1990023671]
+unique_name_in_owner = true
+script = ExtResource("6_g6k8r")
+
+[node name="Label" type="Label" parent="." unique_id=790965434]
+offset_left = -19.0
+offset_top = -65.0
+offset_right = 21.0
+offset_bottom = -42.0
+theme_override_font_sizes/font_size = 12
+text = "State"
+horizontal_alignment = 1
+
+[node name="OnewayPlatformRaycast" type="RayCast2D" parent="." unique_id=252300155]
+target_position = Vector2(0, 4)
+collision_mask = 2

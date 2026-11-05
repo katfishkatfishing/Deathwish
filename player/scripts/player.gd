@@ -1,6 +1,14 @@
 class_name Player
 extends CharacterBody2D
 
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var collision_stand: CollisionShape2D = $CollisionStand
+@onready var collision_crouch: CollisionShape2D = $CollisionCrouch
+@onready var oneway_platform_raycast: RayCast2D = $OnewayPlatformRaycast
+@onready var move_speed: float = 150.0
+
+const DEBUG_JUMP_INDICATOR = preload("res://player/debug_jump_indicator.tscn")
+
 # state machine variables
 var states: Array[PlayerState] = []
 
@@ -17,6 +25,7 @@ var previous_state: PlayerState:
 #variables
 var direction: Vector2 = Vector2.ZERO
 var gravity: float = 980.0
+var gravity_multiplier: float = 1.0
 
 func _ready() -> void:
 	initialise_states()
@@ -30,7 +39,7 @@ func _process(delta: float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	#apply gravity to jump
-	velocity.y += gravity * delta
+	velocity.y += (gravity * gravity_multiplier) * delta
 	
 	#execute movement & collisions
 	move_and_slide()
@@ -60,21 +69,34 @@ func initialise_states() -> void:
 
 func change_state(new_state: PlayerState) -> void:
 	#if no transition requested or already in that state, ignore
-	if new_state == null:
-		return
-	elif new_state == current_state:
+	if new_state == null or new_state == current_state:
 		return
 		
 	#exit old state
 	if current_state:
 		current_state.exit()
 		
-	#puah the new state to idx 0 and enter it
+	#push the new state to idx 0 and enter it
 	states.push_front(new_state)
 	current_state.enter()
 
-	#keep hiatory at 3 to prevent bloat
+	#keep history at 3 to prevent bloat
 	states.resize(3)
 	
+	#update label for debug
+	$Label.text = current_state.name
+	
 func update_direction() -> void:
-	direction = Input.get_vector("left", "right", "up", "down")
+	#in case there are ever any players playing with controller
+	direction.x = Input.get_axis("left", "right")
+	direction.y = Input.get_axis("up", "down")
+	
+
+func add_debug_indicator(color: Color = Color.RED) -> void:
+	var d: Node2D = DEBUG_JUMP_INDICATOR.instantiate()
+	get_tree().root.add_child(d)
+	d.global_position = global_position
+	d.modulate = color
+	
+	await get_tree().create_timer(3.0).timeout
+	d.queue_free()

@@ -1,6 +1,12 @@
 class_name PlayerState
 extends Node
 
+@onready var idle: PlayerState = %Idle
+@onready var run: PlayerState = %Run
+@onready var jump: PlayerState = %Jump
+@onready var fall: PlayerState = %Fall
+@onready var crouch: PlayerState = %Crouch
+
 var player: Player
 var next_state: PlayerState
 
