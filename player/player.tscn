@@ -16,8 +16,8 @@ size = Vector2(16, 46)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjkh3"]
 size = Vector2(16, 30)
 
-[node name="Player" type="CharacterBody2D" unique_id=1882587580]
-collision_layer = 0
+[node name="Player" type="CharacterBody2D" unique_id=1882587580 groups=["player"]]
+collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_oul6g")
 
@@ -68,3 +68,6 @@ horizontal_alignment = 1
 [node name="OnewayPlatformRaycast" type="RayCast2D" parent="." unique_id=252300155]
 target_position = Vector2(0, 4)
 collision_mask = 2
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1446866907]
+position = Vector2(0, -40)
