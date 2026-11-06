@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
 @onready var oneway_platform_raycast: RayCast2D = $OnewayPlatformRaycast
 @onready var move_speed: float = 150.0
+@onready var max_fall_velocity: float = 600.0
 
 const DEBUG_JUMP_INDICATOR = preload("res://player/debug_jump_indicator.tscn")
 
@@ -40,6 +41,8 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	#apply gravity to jump
 	velocity.y += (gravity * gravity_multiplier) * delta
+	
+	velocity.y = clampf(velocity.y, -1000.0, max_fall_velocity)
 	
 	#execute movement & collisions
 	move_and_slide()
