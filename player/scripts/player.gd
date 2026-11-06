@@ -29,6 +29,14 @@ var gravity: float = 980.0
 var gravity_multiplier: float = 1.0
 
 func _ready() -> void:
+	#if player instance already persists, free the dupe
+	var existing_player = get_tree().get_first_node_in_group("player")
+	if existing_player and existing_player != self:
+		queue_free()
+		return
+		
+	#reparent so wont get deleted when scene change
+	reparent.call_deferred(get_tree().root)
 	initialise_states()
 	
 func _unhandled_input(event: InputEvent) -> void:
