@@ -28,6 +28,15 @@ var direction: Vector2 = Vector2.ZERO
 var gravity: float = 980.0
 var gravity_multiplier: float = 1.0
 
+#region //player stats
+var hp: float = 100.0
+var max_hp = 100.0
+
+var dash: bool = false
+var double_jump: bool = false
+var ground_slam: bool = false
+#endregion
+
 func _ready() -> void:
 	#if player instance already persists, free the dupe
 	var existing_player = get_tree().get_first_node_in_group("player")
