@@ -21,6 +21,7 @@ GameCore="*uid://bgye6iibxpe45"
 EventBus="*uid://bxhur44tfk4nf"
 SceneManager="*uid://whc6lxnf1ykb"
 SaveManager="*uid://c1avs2kogjigk"
+Messages="*uid://cpnhoaxsh61vy"
 
 [display]
 

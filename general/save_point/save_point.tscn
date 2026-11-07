@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://ctot0ypsnyynv"]
+
+[ext_resource type="Script" uid="uid://10nulsm6ljeg" path="res://general/save_point/save_point.gd" id="1_a0gwv"]
+
+[sub_resource type="Gradient" id="Gradient_f82ql"]
+colors = PackedColorArray(0.9882353, 0, 0.3529412, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_57qmd"]
+gradient = SubResource("Gradient_f82ql")
+width = 256
+height = 256
+fill = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+
+[node name="SavePoint" type="Node2D" unique_id=1307582332]
+script = ExtResource("1_a0gwv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=641197324]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1600172225]
+texture = SubResource("GradientTexture2D_57qmd")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1408911006]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2116294838]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=8346582]
+
+[node name="Label" type="Label" parent="Node2D" unique_id=359437045]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
+text = "Game Saved"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D" unique_id=949373556]

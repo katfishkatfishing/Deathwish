@@ -46,9 +46,15 @@ func _ready() -> void:
 		
 	#reparent so wont get deleted when scene change
 	reparent.call_deferred(get_tree().root)
+	
+	Messages.player_healed.connect(on_player_healed)
+	
 	initialise_states()
 	
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("action"):
+		Messages.player_interacted.emit(self)
+		
 	change_state(current_state.handle_input(event))
 
 func _process(delta: float) -> void:
@@ -120,3 +126,6 @@ func add_debug_indicator(color: Color = Color.RED) -> void:
 	
 	await get_tree().create_timer(3.0).timeout
 	d.queue_free()
+
+func on_player_healed(amount: float) -> void:
+	hp = min(hp + amount, max_hp)

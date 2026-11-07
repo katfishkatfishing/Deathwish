@@ -12,7 +12,7 @@ var new_game_scene: String = "res://levels/00_dungeon/01.tscn"
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		#quick save/quick load hotkeys
-		if event.keyode == KEY_F5:
+		if event.keycode == KEY_F5:
 			save_game()
 		elif event.keycode == KEY_F7:
 			load_game()

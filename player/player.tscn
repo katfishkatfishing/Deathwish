@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bn2y73e4nnlv1" path="res://player/states/player_state_jump.gd" id="4_yw30f"]
 [ext_resource type="Script" uid="uid://dfqa4sgorvh51" path="res://player/states/player_state_fall.gd" id="5_qjkh3"]
 [ext_resource type="Script" uid="uid://cq4rg6ksqbx83" path="res://player/states/player_state_crouch.gd" id="6_g6k8r"]
+[ext_resource type="Script" uid="uid://3w72y0mkjcgd" path="res://player/scripts/input_hints.gd" id="7_boad6"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g4v7s"]
 size = Vector2(18, 48)
@@ -15,6 +16,8 @@ size = Vector2(16, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjkh3"]
 size = Vector2(16, 30)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yf5fn"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1882587580 groups=["player"]]
 collision_layer = 16
@@ -71,3 +74,11 @@ collision_mask = 2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1446866907]
 position = Vector2(0, -40)
+
+[node name="InputHints" type="Node2D" parent="." unique_id=385045702]
+position = Vector2(0, -67)
+script = ExtResource("7_boad6")
+
+[node name="Sprite2D" type="Sprite2D" parent="InputHints" unique_id=812812641]
+texture = SubResource("PlaceholderTexture2D_yf5fn")
+hframes = 16
