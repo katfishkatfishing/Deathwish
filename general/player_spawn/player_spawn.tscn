@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cshkjakbtvv5g"]
+
+[ext_resource type="Script" uid="uid://drdqv5s8rf2o" path="res://general/player_spawn/player_spawn.gd" id="1_2y6re"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g4v7s"]
+
+[node name="PlayerSpawn" type="Node2D" unique_id=1297226535]
+script = ExtResource("1_2y6re")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=887567982]
+modulate = Color(1.1364014, 0.95847166, 1.1065606, 1)
+z_index = 100
+position = Vector2(0, -1)
+texture = SubResource("PlaceholderTexture2D_g4v7s")

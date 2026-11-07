@@ -23,6 +23,9 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
+	#force collision to update
+	apply_area_settings()
+	
 	SceneManager.new_scene_ready.connect(on_new_scene_ready)
 	SceneManager.load_scene_finished.connect(on_load_scene_finished)
 	
