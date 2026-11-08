@@ -35,8 +35,16 @@ var gravity: float = 980.0
 var gravity_multiplier: float = 1.0
 
 #region //player stats
-var hp: float = 100.0
-var max_hp = 100.0
+var hp: float = 100.0:
+	set(value):
+		hp = clampf(value, 0.0, max_hp)
+		Messages.player_health_changed_emit(hp, max_hp)
+
+var max_hp: float = 100.0:
+	set(value):
+		max_hp = maxf(value, 1.0)
+		Messages.player_health_changed.emit(hp, max_hp)
+		
 
 var dash: bool = false
 var double_jump: bool = false
