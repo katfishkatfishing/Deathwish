@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://cxagqask4q1tv"]
 
-[ext_resource type="Script" uid="uid://dsqilvkk7dttk" path="res://title_screen/title_screen.gd" id="1_g2mvh"]
-
 [node name="TitleScreen" type="CanvasLayer" unique_id=818420799]
 layer = 5
-script = ExtResource("1_g2mvh")
 
 [node name="UIContainer" type="Control" parent="." unique_id=830988526]
 layout_mode = 3
@@ -56,13 +53,6 @@ unique_name_in_owner = true
 layout_mode = 2
 offset_transform_enabled = true
 text = "Load Game"
-
-[node name="LogoContainer" type="Control" parent="UIContainer/MainMenu" unique_id=847018733]
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="UIContainer/MainMenu/LogoContainer" unique_id=1165333470]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UIContainer/MainMenu/LogoContainer" unique_id=97020739]
 
 [node name="NewGameMenu" type="VBoxContainer" parent="UIContainer" unique_id=348860210]
 unique_name_in_owner = true

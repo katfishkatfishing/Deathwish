@@ -23,9 +23,4 @@ func physics_process(_delta: float) -> PlayerState:
 	
 	#apply x movement based on speed
 	player.velocity.x = player.direction.x * move_speed
-	#continuous update animation based on facing direction
-	player.sprite.play("Walking(" + player.facing_direction + ")")
 	return next_state
-
-func enter() -> void:
-	player.sprite.play("Walking(" + player.facing_direction + ")")

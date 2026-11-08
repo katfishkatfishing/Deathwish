@@ -11,7 +11,6 @@ var buffer_timer: float = 0.0
 func enter() -> void:
 	#increase grav when falling for smoother
 	player.gravity_multiplier = fall_gravity_multiplier
-	player.sprite.play("Falling(" + player.facing_direction + ")")
 	
 	#only coyote timme if walk off edge
 	if player.previous_state == jump:
