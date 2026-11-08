@@ -29,9 +29,10 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2116294838]
 shape = SubResource("RectangleShape2D_g4v7s")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=8346582]
+[node name="MessageRoot" type="Node2D" parent="." unique_id=8346582]
+position = Vector2(0, 1)
 
-[node name="Label" type="Label" parent="Node2D" unique_id=359437045]
+[node name="Label" type="Label" parent="MessageRoot" unique_id=359437045]
 visible = false
 offset_right = 40.0
 offset_bottom = 23.0
@@ -39,4 +40,4 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
 text = "Game Saved"
 horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D" unique_id=949373556]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MessageRoot" unique_id=949373556]

@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://cxagqask4q1tv"]
+
+[node name="TitleScreen" type="CanvasLayer" unique_id=818420799]
+layer = 5
+
+[node name="UIContainer" type="Control" parent="." unique_id=830988526]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TileMapContainer" type="Control" parent="UIContainer" unique_id=1161464136]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="UIContainer" unique_id=1004004881]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+color = Color(0.18453678, 0.009959008, 0.017224107, 1)
+
+[node name="MainMenu" type="VBoxContainer" parent="UIContainer" unique_id=1043022894]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -120.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="UIContainer/MainMenu" unique_id=700259560]
+position = Vector2(98.69229, -72.7251)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UIContainer/MainMenu" unique_id=540041648]
+
+[node name="NewGameButton" type="Button" parent="UIContainer/MainMenu" unique_id=1867498481]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New Game"
+
+[node name="LoadGameButton" type="Button" parent="UIContainer/MainMenu" unique_id=2025884953]
+unique_name_in_owner = true
+layout_mode = 2
+offset_transform_enabled = true
+text = "Load Game"
+
+[node name="NewGameMenu" type="VBoxContainer" parent="UIContainer" unique_id=348860210]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UIContainer/NewGameMenu" unique_id=54927495]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78184885, 0.15543386, 0.18479168, 1)
+text = "Start a new game."
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="UIContainer/NewGameMenu" unique_id=1956975826]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="NewSlot01" type="Button" parent="UIContainer/NewGameMenu" unique_id=1108773668]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Begin Slot 1"
+
+[node name="NewSlot02" type="Button" parent="UIContainer/NewGameMenu" unique_id=383467804]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Begin Slot 02"
+
+[node name="NewSlot03" type="Button" parent="UIContainer/NewGameMenu" unique_id=1884004592]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Begin Slot 3"
+
+[node name="LoadGameMenu" type="VBoxContainer" parent="UIContainer" unique_id=668552246]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UIContainer/LoadGameMenu" unique_id=1504499878]
+layout_mode = 2
+text = "Load a saved game."
+
+[node name="Control" type="Control" parent="UIContainer/LoadGameMenu" unique_id=616420308]
+layout_mode = 2
+
+[node name="LoadSlot01" type="Button" parent="UIContainer/LoadGameMenu" unique_id=1739849057]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Load Slot 1"
+
+[node name="LoadSlot02" type="Button" parent="UIContainer/LoadGameMenu" unique_id=279641210]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Load Slot 2"
+
+[node name="LoadSlot03" type="Button" parent="UIContainer/LoadGameMenu" unique_id=986743220]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Load Slot 3"

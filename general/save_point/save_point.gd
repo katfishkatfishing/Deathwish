@@ -6,7 +6,7 @@ extends Node2D
 
 func _ready() -> void:
 	area_2d.body_entered.connect(on_player_entered)
-	area_2d.body_existed.connect(on_player_exited)
+	area_2d.body_exited.connect(on_player_exited)
 
 func on_player_entered(_body: Node2D) -> void:
 	# show the interaction button

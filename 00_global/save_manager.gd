@@ -23,10 +23,14 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		elif event.keycode == KEY_3:
 			current_slot = 2
 
-func get_file_name() -> String:
+func get_file_name(slot: int = current_slot) -> String:
 	return "user://" + SLOTS[current_slot] + ".sav"
+	
+func save_file_exists(slot: int) -> bool:
+	return FileAccess.file_exists(get_file_name(slot))
 
-func create_new_game_save() -> void:
+func create_new_game_save(slot: int) -> void:
+	current_slot = slot
 	discovered_areas.clear()
 	persistent_data.clear()
 	discovered_areas.append(new_game_scene)
@@ -44,6 +48,7 @@ func create_new_game_save() -> void:
 		"persistent_data": persistent_data
 	}
 	write_to_file()
+	load_game(slot)
 
 func save_game() -> void:
 	var player: Player = get_tree().get_first_node_in_group("player") as Player
@@ -70,7 +75,7 @@ func write_to_file() -> void:
 		var json_string: String = JSON.stringify(save_data)
 		save_file.store_line(json_string)
 		
-func load_game() -> void:
+func load_game(slot: int = current_slot) -> void:
 	if not FileAccess.file_exists(get_file_name()):
 		return
 	
