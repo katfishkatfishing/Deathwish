@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
 @onready var oneway_platform_raycast: RayCast2D = $OnewayPlatformRaycast
@@ -16,13 +16,19 @@ var states: Array[PlayerState] = []
 # return active state
 var current_state: PlayerState:
 	get:
-		return states.front()
+		if not states.is_empty():
+			return states.front()
+		return null
 		
 #return immediate previous state
 var previous_state: PlayerState:
 	get:
-		return states[1]
+		if states.size() > 1:
+			return states[1]
+		return null
 		
+#Determine player facing direction
+var facing_direction: String = "Left"
 #variables
 var direction: Vector2 = Vector2.ZERO
 var gravity: float = 980.0
@@ -59,6 +65,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	update_direction()
+	if direction.x > 0:
+		sprite.flip_h = false
+	elif direction.x < 0:
+		sprite.flip_h = false
 	change_state(current_state.process(delta))
 	
 func _physics_process(delta: float) -> void:
@@ -116,7 +126,10 @@ func update_direction() -> void:
 	#in case there are ever any players playing with controller
 	direction.x = Input.get_axis("left", "right")
 	direction.y = Input.get_axis("up", "down")
-	
+	if direction.x > 0:
+		facing_direction = "Right"
+	elif direction.x < 0:
+		facing_direction = "Left"
 
 func add_debug_indicator(color: Color = Color.RED) -> void:
 	var d: Node2D = DEBUG_JUMP_INDICATOR.instantiate()

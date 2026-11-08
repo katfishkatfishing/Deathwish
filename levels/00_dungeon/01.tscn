@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cshkjakbtvv5g" path="res://general/player_spawn/player_spawn.tscn" id="3_7y5fl"]
 [ext_resource type="Script" uid="uid://bid4d1kawtgew" path="res://general/scripts/level_bounds.gd" id="3_x0ng3"]
 [ext_resource type="PackedScene" uid="uid://ctot0ypsnyynv" path="res://general/save_point/save_point.tscn" id="4_7y5fl"]
+[ext_resource type="PackedScene" uid="uid://bkqu31cujx45k" path="res://player/player.tscn" id="5_tv0vo"]
 
 [node name="01" type="Node2D" unique_id=477144091]
 position = Vector2(255, 93)
@@ -27,3 +28,9 @@ metadata/_custom_type_script = "uid://bid4d1kawtgew"
 [node name="PlayerSpawn" parent="." unique_id=1297226535 instance=ExtResource("3_7y5fl")]
 
 [node name="SavePoint" parent="." unique_id=1307582332 instance=ExtResource("4_7y5fl")]
+
+[node name="Player" parent="." unique_id=1882587580 instance=ExtResource("5_tv0vo")]
+position = Vector2(-37, 14)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1834712633]
+position = Vector2(-37, -8)

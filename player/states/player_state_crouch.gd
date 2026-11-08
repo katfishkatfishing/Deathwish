@@ -7,6 +7,7 @@ func enter() -> void:
 	#swap collision shape to crouching
 	player.collision_stand.disabled = true
 	player.collision_crouch.disabled = false
+	player.sprite.play("Crouch(" + player.facing_direction + ")")
 	
 	#temp visuals
 	player.sprite.scale.y = 0.625
@@ -42,6 +43,14 @@ func physics_process(delta: float) -> PlayerState:
 	# fall if platform gone
 	if not player.is_on_floor():
 		return fall
+		
+	#update facing directions while crouched
+	if player.direction.x > 0:
+		player.facing_direction = "Right"
+		player.sprite.play("Crouch(Right)")
+	elif player.direction.x < 0:
+		player.facing_direction = "Left"
+		player.sprite.play("Crouch(Left)")
 		
 	#decel when crouching
 	player.velocity.x -= (player.velocity.x * deceleration_rate) * delta

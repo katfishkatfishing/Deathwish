@@ -27,7 +27,7 @@ const HINT_MAP: Dictionary = {
 }
 
 var controller_type: String = "keyboard"
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
 
 func _ready() -> void:
 	visible = false
