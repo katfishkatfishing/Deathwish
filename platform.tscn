@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://g6duxfin4kdl"]
+
+[ext_resource type="Texture2D" uid="uid://duvqp6rnsevul" path="res://levels/tile_sets/sprites/temp.png" id="1_mi635"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(80, 18)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" unique_id=739227173]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=747200113]
+texture = ExtResource("1_mi635")
+region_enabled = true
+region_rect = Rect2(537, 352, 80, 22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1496769026]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_g4v7s")
+one_way_collision = true

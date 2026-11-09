@@ -1,102 +1,90 @@
-[gd_scene format=3 uid="uid://cywt3uoiwm17s"]
+[gd_scene format=4 uid="uid://cywt3uoiwm17s"]
 
-[ext_resource type="PackedScene" uid="uid://bkqu31cujx45k" path="res://player/player.tscn" id="1_37kl0"]
-[ext_resource type="Texture2D" uid="uid://c0kdjxwmytona" path="res://assets/sprites/Blocks_spritesheet.png" id="2_8uh7m"]
-[ext_resource type="Texture2D" uid="uid://tjdnwlhaadxx" path="res://assets/sprites/TorchAnimation.png" id="3_6uqi0"]
+[ext_resource type="TileSet" uid="uid://gc3esoxw5p0o" path="res://levels/tile_sets/dungeon.tres" id="2_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://dbfje6ckblayb" path="res://Player.tscn" id="2_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://g6duxfin4kdl" path="res://platform.tscn" id="3_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://7hwin230gbjq" path="res://slime.tscn" id="4_ppyta"]
+[ext_resource type="PackedScene" uid="uid://7u7o3ki1jv50" path="res://killzone.tscn" id="5_ykrsh"]
+[ext_resource type="PackedScene" uid="uid://b5wq66qi6chw" path="res://board.tscn" id="6_g14j6"]
 
-[sub_resource type="Gradient" id="Gradient_37kl0"]
-offsets = PackedFloat32Array(0, 0.99759614)
-colors = PackedColorArray(0.19215687, 0.69411767, 1, 1, 1, 1, 1, 0.40392157)
+[sub_resource type="Animation" id="Animation_6uqi0"]
+resource_name = "Move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(872, -181), Vector2(1048, -181)]
+}
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4v7s"]
-gradient = SubResource("Gradient_37kl0")
-height = 16
-fill_to = Vector2(0, 1)
+[sub_resource type="Animation" id="Animation_ppyta"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(872, -181)]
+}
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(64, 15)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ykrsh"]
+_data = {
+&"Move": SubResource("Animation_6uqi0"),
+&"RESET": SubResource("Animation_ppyta")
+}
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6uqi0"]
-texture = ExtResource("2_8uh7m")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-1:1/0 = 0
-0:1/0 = 0
-4:0/animation_mode = 1
-4:0/0 = 0
-4:1/animation_mode = 1
-4:1/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-3:0/next_alternative_id = 2
-3:0/animation_mode = 1
-3:0/0 = 0
-3:0/1 = 1
-5:1/next_alternative_id = 2
-5:1/animation_mode = 1
-5:1/0 = 0
-5:1/1 = 1
-5:0/animation_mode = 1
-5:0/0 = 0
-3:1/next_alternative_id = 5
-3:1/animation_mode = 1
-3:1/0 = 0
-3:1/1 = 1
-3:1/2 = 2
-3:1/3 = 3
-3:1/4 = 4
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ppyta"]
-texture = ExtResource("3_6uqi0")
-texture_region_size = Vector2i(32, 32)
-0:0/animation_columns = 6
-0:0/animation_frame_0/duration = 0.2
-0:0/animation_frame_1/duration = 0.2
-0:0/animation_frame_2/duration = 0.2
-0:0/animation_frame_3/duration = 0.2
-0:0/animation_frame_4/duration = 0.2
-0:0/animation_frame_5/duration = 0.2
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_37kl0"]
-tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_6uqi0")
-sources/4 = SubResource("TileSetAtlasSource_ppyta")
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g4v7s"]
-distance = 1.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(1790, 20)
 
 [node name="test" type="Node2D" unique_id=769783867]
+position = Vector2(153, 188)
 
-[node name="Player" parent="." unique_id=1882587580 instance=ExtResource("1_37kl0")]
-position = Vector2(86, -11)
+[node name="Player" parent="." unique_id=206486534 instance=ExtResource("2_8uh7m")]
+z_index = 1
+position = Vector2(-167, -214)
 
-[node name="OnewayPlatform" type="Sprite2D" parent="." unique_id=172199262]
-position = Vector2(85, -84)
-texture = SubResource("GradientTexture2D_g4v7s")
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=604860774]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD5//r/AAAdAAAAAAD5//v/AAAdAAEAAAD6//r/AAAdAAAAAAD6//v/AAAdAAEAAAD7//r/AAAdAAAAAAD7//v/AAAdAAEAAAD8//r/AAAdAAAAAAD8//v/AAAdAAEAAAD9//r/AAAdAAAAAAD9//v/AAAdAAEAAAD+//r/AAAdAAAAAAD+//v/AAAdAAEAAAD///r/AAAdAAAAAAD///v/AAAdAAEAAAAAAPr/AAAdAAAAAAAAAPv/AAAdAAEAAAABAPr/AAAdAAAAAAABAPv/AAAdAAEAAAACAPr/AAAdAAAAAAACAPv/AAAdAAEAAAADAPr/AAAdAAAAAAADAPv/AAAdAAEAAAAEAPr/AAAdAAAAAAAEAPv/AAAdAAEAAAAGAPr/AAAdAAAAAAAGAPv/AAAdAAEAAAAHAPr/AAAdAAAAAAAHAPv/AAAdAAEAAAAIAPr/AAAdAAAAAAAIAPv/AAAdAAEAAAAFAPr/AAAdAAAAAAAFAPv/AAAdAAEAAAAJAPr/AAAdAAAAAAAJAPv/AAAdAAEAAAAKAPr/AAAdAAAAAAAKAPv/AAAdAAEAAAALAPr/AAAdAAAAAAALAPv/AAAdAAEAAAAMAPr/AAAdAAAAAAAMAPv/AAAdAAEAAAANAPr/AAACAAgAAAANAPv/AAACAAkAAAAOAPr/AAACAAgAAAAOAPv/AAACAAkAAAANAPz/AAACAAoAAAAOAPz/AAACAAoAAAAPAPr/AAADAAgAAAAPAPv/AAADAAkAAAAPAPz/AAADAAoAAAAQAPr/AAACAAgAAAAQAPv/AAACAAkAAAAQAPz/AAACAAoAAAARAPr/AAADAAgAAAARAPv/AAADAAkAAAARAPz/AAADAAoAAAASAPr/AAACAAgAAAASAPv/AAACAAkAAAASAPz/AAACAAoAAAATAPr/AAADAAgAAAATAPv/AAADAAkAAAATAPz/AAADAAoAAAAUAPr/AAACAAgAAAAUAPv/AAACAAkAAAAUAPz/AAACAAoAAAAVAPr/AAADAAgAAAAVAPv/AAADAAkAAAAVAPz/AAADAAoAAAAWAPr/AAACAAgAAAAWAPv/AAACAAkAAAAWAPz/AAACAAoAAAAXAPr/AAADAAgAAAAXAPv/AAADAAkAAAAXAPz/AAADAAoAAAAYAPr/AAACAAgAAAAYAPv/AAACAAkAAAAYAPz/AAACAAoAAAAZAPr/AAADAAgAAAAZAPv/AAADAAkAAAAZAPz/AAADAAoAAAAVAPb/AAAXAAwAAAATAPj/AAAQAAgAAAATAPn/AAAQAAkAAAAIAPj/AAAQAAgAAAAIAPn/AAAQAAkAAAAKAPP/AAAXAAkAAAAKAPT/AAAXAAoAAAAKAPX/AAAXAAsAAAAKAPb/AAAXAAwAAAAKAPf/AAAXAA0AAAALAPP/AAAYAAkAAAALAPT/AAAYAAoAAAALAPX/AAAYAAsAAAALAPb/AAAYAAwAAAALAPf/AAAYAA0AAAALAPj/AAAYAA4AAAALAPn/AAAYAA8AAAAMAPT/AAAZAAoAAAAMAPX/AAAZAAsAAAAMAPb/AAAZAAwAAAAMAPf/AAAZAA0AAAAVAPP/AAAXAAkAAAAVAPT/AAAXAAoAAAAVAPX/AAAXAAsAAAAVAPf/AAAXAA0AAAAWAPP/AAAYAAkAAAAWAPT/AAAYAAoAAAAWAPX/AAAYAAsAAAAWAPb/AAAYAAwAAAAWAPf/AAAYAA0AAAAWAPj/AAAYAA4AAAAWAPn/AAAYAA8AAAAXAPT/AAAZAAoAAAAXAPX/AAAZAAsAAAAXAPb/AAAZAAwAAAAXAPf/AAAZAA0AAAAiAPr/AAACAAgAAAAiAPv/AAADAAkAAAAiAPz/AAADAAoAAAAjAPr/AAADAAgAAAAjAPv/AAADAAkAAAAjAPz/AAADAAoAAAAkAPr/AAACAAgAAAAkAPv/AAACAAkAAAAkAPz/AAACAAoAAAAlAPr/AAADAAgAAAAlAPv/AAADAAkAAAAlAPz/AAADAAoAAAAmAPr/AAACAAgAAAAmAPv/AAACAAkAAAAmAPz/AAACAAoAAAAnAPr/AAADAAgAAAAnAPv/AAADAAkAAAAnAPz/AAADAAoAAAAoAPr/AAACAAgAAAAoAPv/AAACAAkAAAAoAPz/AAACAAoAAAApAPr/AAAFAAgAAAApAPv/AAAFAAoAAAApAPz/AAAFAAoAAAAqAPz/AAACAAgAAAAqAP3/AAACAAkAAAArAPz/AAADAAgAAAArAP3/AAADAAkAAAAsAPz/AAACAAgAAAAsAP3/AAACAAkAAAAtAPz/AAADAAgAAAAtAP3/AAADAAkAAAAuAPz/AAACAAgAAAAuAP3/AAACAAkAAAAvAPz/AAADAAgAAAAvAP3/AAADAAkAAAAwAPz/AAACAAgAAAAwAP3/AAACAAkAAAAxAPz/AAADAAgAAAAxAP3/AAADAAkAAAAyAPz/AAACAAgAAAAyAP3/AAACAAkAAAAzAPz/AAADAAgAAAAzAP3/AAADAAkAAAA0APz/AAAAAAkAAAA0APv/AAAAAAkAAAA0APr/AAAAAAgAAAApAP3/AAAEAAoAAAA0AP3/AAABAAoAAAAqAP7/AAACAAoAAAArAP7/AAADAAoAAAAsAP7/AAACAAoAAAAtAP7/AAADAAoAAAAuAP7/AAACAAoAAAAvAP7/AAADAAoAAAAwAP7/AAACAAoAAAAxAP7/AAADAAoAAAAyAP7/AAACAAoAAAAzAP7/AAADAAoAAAA0AP7/AAACAAoAAAApAP7/AAADAAoAAAA1APr/AAACAAgAAAA1APv/AAACAAkAAAA2APr/AAADAAgAAAA2APv/AAADAAkAAAA3APr/AAACAAgAAAA3APv/AAACAAkAAAA4APr/AAADAAgAAAA4APv/AAADAAkAAAA5APr/AAACAAgAAAA5APv/AAACAAkAAAA6APr/AAADAAgAAAA6APv/AAADAAkAAAAaAPr/AAAIAAkAAAAhAPr/AAAJAAkAAAAhAPv/AAACAAkAAAAgAPv/AAADAAkAAAAgAPz/AAADAAoAAAAhAPz/AAACAAoAAAAaAPv/AAACAAkAAAAaAPz/AAACAAoAAAAfAPv/AAACAAkAAAAfAPz/AAACAAoAAAAdAPv/AAADAAkAAAAdAPz/AAADAAoAAAAeAPv/AAADAAkAAAAeAPz/AAADAAoAAAAbAPv/AAADAAkAAAAbAPz/AAADAAoAAAAcAPv/AAACAAkAAAAcAPz/AAACAAoAAAA=")
+tile_set = ExtResource("2_6uqi0")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="OnewayPlatform" unique_id=2040926253]
-collision_layer = 2
-collision_mask = 0
+[node name="Platform" parent="." unique_id=428182626 instance=ExtResource("3_6uqi0")]
+position = Vector2(872, -181)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OnewayPlatform/StaticBody2D" unique_id=1587056594]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_yf5fn")
-one_way_collision = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform" unique_id=47265873]
+libraries/ = SubResource("AnimationLibrary_ykrsh")
+autoplay = &"Move"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1029135933]
-position = Vector2(86, -33)
+[node name="Slime" parent="." unique_id=1092396105 instance=ExtResource("4_ppyta")]
+position = Vector2(1482, -137)
 
-[node name="TileMap" type="TileMap" parent="." unique_id=805489413]
-texture_filter = 1
-tile_set = SubResource("TileSet_37kl0")
-rendering_quadrant_size = 32
-format = 2
-layer_0/tile_data = PackedInt32Array(65530, 1, 0, 131066, 65537, 0, 196602, 1, 1, 262138, 65537, 0, 65531, 1, 0, 131067, 1, 1, 196603, 65537, 0, 262139, 1, 1, 65532, 1, 0, 131068, 65537, 0, 196604, 1, 1, 262140, 65537, 0, 65533, 1, 0, 131069, 1, 1, 196605, 65537, 0, 262141, 1, 1, 65534, 1, 0, 131070, 65537, 0, 196606, 1, 1, 262142, 65537, 0, 65535, 1, 0, 131071, 1, 1, 196607, 65537, 0, 262143, 1, 1, 0, 1, 0, 65536, 65537, 0, 131072, 1, 1, 196608, 65537, 0, 1, 1, 0, 65537, 1, 1, 131073, 65537, 0, 196609, 1, 1, 2, 1, 0, 65538, 65537, 0, 131074, 1, 1, 196610, 65537, 0, 3, 1, 0, 65539, 1, 1, 131075, 65537, 0, 196611, 1, 1, -196604, 4, 0, -131068, 196609, 2, -65532, 262145, 2, 4, 1, 0, 65540, 65537, 0, 131076, 1, 1, 196612, 65537, 0, 5, 1, 0, 65541, 1, 1, 131077, 65537, 0, 196613, 1, 1, 6, 1, 0, 65542, 65537, 0, 131078, 1, 1, 196614, 65537, 0, 7, 1, 0, 65543, 1, 1, 131079, 65537, 0, 196615, 1, 1, 8, 1, 0, 65544, 65537, 0, 131080, 1, 1, 196616, 65537, 0, 9, 1, 0, 65545, 1, 1, 131081, 65537, 0, 196617, 1, 1, 10, 1, 0, 65546, 65537, 0, 131082, 1, 1, 196618, 65537, 0, 11, 1, 0, 65547, 1, 1, 131083, 65537, 0, 196619, 1, 1, 12, 1, 0, 65548, 65537, 0, 131084, 1, 1, 196620, 65537, 0)
+[node name="Killzone" parent="." unique_id=1589355347 instance=ExtResource("5_ykrsh")]
+position = Vector2(888, -64)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1160044166]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=1474052509]
+position = Vector2(-475, -22)
+shape = SubResource("RectangleShape2D_g4v7s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1481869563]
-position = Vector2(0, 6)
-shape = SubResource("WorldBoundaryShape2D_g4v7s")
+[node name="Board" parent="." unique_id=1611803951 instance=ExtResource("6_g14j6")]
+position = Vector2(490, -252)
+
+[node name="Board2" parent="." unique_id=2024894377 instance=ExtResource("6_g14j6")]
+position = Vector2(593, -311)
+
+[node name="Board3" parent="." unique_id=571923965 instance=ExtResource("6_g14j6")]
+position = Vector2(768, -313)
+
+[node name="Board4" parent="." unique_id=26711328 instance=ExtResource("6_g14j6")]
+position = Vector2(947, -271)

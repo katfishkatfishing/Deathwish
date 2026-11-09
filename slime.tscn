@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://7hwin230gbjq"]
+
+[ext_resource type="Texture2D" uid="uid://cl3ibp0yqov1o" path="res://Assets/Character/slime_green.png" id="1_2d52u"]
+[ext_resource type="Script" uid="uid://dxnvvm43su2b" path="res://Scripts/slime.gd" id="1_5jc4t"]
+[ext_resource type="PackedScene" uid="uid://7u7o3ki1jv50" path="res://killzone.tscn" id="3_4l1t8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jc4t"]
+atlas = ExtResource("1_2d52u")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l1t8"]
+atlas = ExtResource("1_2d52u")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppcr1"]
+atlas = ExtResource("1_2d52u")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jayke"]
+atlas = ExtResource("1_2d52u")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jc4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l1t8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppcr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jayke")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(10, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 48.332184
+
+[node name="Node2D" type="Node2D" unique_id=95909207]
+script = ExtResource("1_5jc4t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=555601366]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+autoplay = "default"
+frame_progress = 0.5896516
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1173251097]
+target_position = Vector2(-8, 0)
+collision_mask = 2
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=2105282761]
+target_position = Vector2(8, 0)
+collision_mask = 2
+
+[node name="Killzone" parent="." unique_id=1589355347 instance=ExtResource("3_4l1t8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=1969542150]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Detection Area" type="Area2D" parent="." unique_id=1747944390]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection Area" unique_id=690406715]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_g4v7s")
+
+[connection signal="body_entered" from="Detection Area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Detection Area" to="." method="_on_detection_area_body_exited"]
