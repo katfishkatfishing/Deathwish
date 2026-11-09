@@ -55,7 +55,7 @@ func show_main_menu() -> void:
 func show_new_game_menu() -> void:
 	main_menu.visible = false
 	new_game_menu.visible = true
-	load_game_menu.visble = false
+	load_game_menu.visible = false
 	new_slot_01.grab_focus()
 	
 	new_slot_01.text = "Replace Slot 1" if SaveManager.save_file_exists(0) else "Begin Slot 1"

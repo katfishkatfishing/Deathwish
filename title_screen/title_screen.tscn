@@ -97,6 +97,7 @@ layout_mode = 2
 text = "Begin Slot 3"
 
 [node name="LoadGameMenu" type="VBoxContainer" parent="UIContainer" unique_id=668552246]
+unique_name_in_owner = true
 visible = false
 layout_mode = 0
 offset_right = 40.0
