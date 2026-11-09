@@ -6,6 +6,7 @@ extends PlayerState
 func enter() -> void:
 	#upward impulse
 	player.velocity.y = -jump_velocity #uh up is - forsomereason
+	player.sprite.play("Jump(" + player.facing_direction + ")")
 	player.add_debug_indicator(Color.LIME_GREEN)
 	
 func exit() -> void:
@@ -28,5 +29,8 @@ func physics_process(_delta: float) -> PlayerState:
 		
 	#air control
 	player.velocity.x = player.direction.x * player.move_speed
+	
+	#continuously update player facing direction
+	player.sprite.play("Jump(" + player.facing_direction + ")")
 	
 	return next_state

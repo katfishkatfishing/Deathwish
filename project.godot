@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Death Wish"
-run/main_scene="uid://cywt3uoiwm17s"
+run/main_scene="uid://cxagqask4q1tv"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,7 @@ EventBus="*uid://bxhur44tfk4nf"
 SceneManager="*uid://whc6lxnf1ykb"
 SaveManager="*uid://c1avs2kogjigk"
 Messages="*uid://cpnhoaxsh61vy"
+PlayerHud="*uid://ommnwkrqe3m4"
 
 [display]
 
@@ -35,10 +36,6 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/GodotTogether/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
-
-[global_group]
-
-player=""
 
 [gui]
 

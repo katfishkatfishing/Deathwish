@@ -4,6 +4,7 @@ extends PlayerState
 func enter() -> void:
 	#when idle stopp movemment
 	player.velocity.x = 0.0
+	player.sprite.play("Idle(" + player.facing_direction + ")")
 	
 func handle_input(event: InputEvent) -> PlayerState:
 	#jumpp when stationary
@@ -25,4 +26,6 @@ func physics_process(_delta: float) -> PlayerState:
 		return fall
 	#make sure velo is 0
 	player.velocity.x = 0.0
+	#continuously update player facing direction
+	player.sprite.play("Idle(" + player.facing_direction + ")")
 	return next_state
