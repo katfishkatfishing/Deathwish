@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://cywt3uoiwm17s"]
 
 [ext_resource type="TileSet" uid="uid://gc3esoxw5p0o" path="res://levels/tile_sets/dungeon.tres" id="2_6uqi0"]
-[ext_resource type="PackedScene" uid="uid://dbfje6ckblayb" path="res://Player.tscn" id="2_8uh7m"]
-[ext_resource type="PackedScene" uid="uid://g6duxfin4kdl" path="res://platform.tscn" id="3_6uqi0"]
-[ext_resource type="PackedScene" uid="uid://7hwin230gbjq" path="res://slime.tscn" id="4_ppyta"]
-[ext_resource type="PackedScene" uid="uid://7u7o3ki1jv50" path="res://killzone.tscn" id="5_ykrsh"]
-[ext_resource type="PackedScene" uid="uid://b5wq66qi6chw" path="res://board.tscn" id="6_g14j6"]
+[ext_resource type="PackedScene" path="res://Player.tscn" id="2_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://g6duxfin4kdl" path="res://levels/objects/platform.tscn" id="3_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://7hwin230gbjq" path="res://entities/enemies/slime.tscn" id="4_ppyta"]
+[ext_resource type="PackedScene" uid="uid://7u7o3ki1jv50" path="res://entities/enemies/killzone.tscn" id="5_ykrsh"]
+[ext_resource type="PackedScene" uid="uid://b5wq66qi6chw" path="res://levels/objects/board.tscn" id="6_g14j6"]
 
 [sub_resource type="Animation" id="Animation_6uqi0"]
 resource_name = "Move"
