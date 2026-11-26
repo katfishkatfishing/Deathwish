@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://cywt3uoiwm17s"]
+
+[ext_resource type="PackedScene" uid="uid://bkqu31cujx45k" path="res://player/player.tscn" id="1_37kl0"]
+[ext_resource type="Texture2D" uid="uid://c0kdjxwmytona" path="res://assets/sprites/Blocks_spritesheet.png" id="2_8uh7m"]
+
+[sub_resource type="Gradient" id="Gradient_mf4mk"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yf5fn"]
+gradient = SubResource("Gradient_mf4mk")
+width = 32
+height = 32
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_37kl0"]
+distance = 16.0
+
+[sub_resource type="Gradient" id="Gradient_37kl0"]
+offsets = PackedFloat32Array(0, 0.99759614)
+colors = PackedColorArray(0.19215687, 0.69411767, 1, 1, 1, 1, 1, 0.40392157)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4v7s"]
+gradient = SubResource("Gradient_37kl0")
+height = 16
+fill_to = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(64, 15)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6uqi0"]
+texture = ExtResource("2_8uh7m")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+5:1/0 = 0
+4:1/0 = 0
+3:1/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_37kl0"]
+sources/1 = SubResource("TileSetAtlasSource_6uqi0")
+
+[node name="test" type="Node2D" unique_id=769783867]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1337195031]
+position = Vector2(84.500046, 6)
+scale = Vector2(14.21875, 1)
+texture = SubResource("GradientTexture2D_yf5fn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D" unique_id=466698328]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" unique_id=172285551]
+position = Vector2(0.03516162, 1)
+shape = SubResource("WorldBoundaryShape2D_37kl0")
+
+[node name="Player" parent="." unique_id=1882587580 instance=ExtResource("1_37kl0")]
+position = Vector2(86, -11)
+
+[node name="OnewayPlatform" type="Sprite2D" parent="." unique_id=172199262]
+position = Vector2(85, -84)
+texture = SubResource("GradientTexture2D_g4v7s")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OnewayPlatform" unique_id=2040926253]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnewayPlatform/StaticBody2D" unique_id=1587056594]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_yf5fn")
+one_way_collision = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1029135933]
+position = Vector2(86, -33)
+
+[node name="TileMap" type="TileMap" parent="." unique_id=805489413]
+tile_set = SubResource("TileSet_37kl0")
+rendering_quadrant_size = 32
+format = 2
