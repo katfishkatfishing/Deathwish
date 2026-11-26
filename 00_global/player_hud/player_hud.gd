@@ -6,6 +6,7 @@ extends CanvasLayer
 func _ready() -> void:
 	#connect to the message bus
 	Messages.player_health_changed.connect(update_health_bar)
+	SceneManager.load_scene_finished.connect(update_visibility)
 	
 	#fetch initial values if player is alr loaded
 	var player = get_tree()	.get_first_node_in_group("player")
@@ -20,3 +21,9 @@ func update_health_bar(current_hp: float, max_hp: float) -> void:
 	
 	#expand frame when max hp increase
 	hp_margin_container.size.x = max_hp + 22.0
+
+func update_visibility() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	visible = player != null
+	if player:
+		update_health_bar(player.hp, player.max_hp)

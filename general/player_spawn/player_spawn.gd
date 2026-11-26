@@ -15,7 +15,7 @@ func _ready() -> void:
 	
 func spawn_player() -> void:
 	#load in player
-	var player_scene: PackedScene = load("res://player/player.tscn")
+	var player_scene: PackedScene = load("res://entities/player/player.tscn")
 	var player_instance = player_scene.instantiate()
 	
 	#add player to root

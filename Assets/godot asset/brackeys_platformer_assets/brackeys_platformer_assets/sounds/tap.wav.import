@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dw37ej76tcjje"
-path="res://.godot/imported/tap.wav-d97d59cf4ddbdbda15b679ea4378acf5.sample"
+uid="uid://bhke321v11m7a"
+path="res://.godot/imported/tap.wav-49db6714a5482ddf034f05719d84ab12.sample"
 
 [deps]
 
-source_file="res://Assets/godot asset/brackeys_platformer_assets/brackeys_platformer_assets/sounds/tap.wav"
-dest_files=["res://.godot/imported/tap.wav-d97d59cf4ddbdbda15b679ea4378acf5.sample"]
+source_file="res://assets/godot asset/brackeys_platformer_assets/brackeys_platformer_assets/sounds/tap.wav"
+dest_files=["res://.godot/imported/tap.wav-49db6714a5482ddf034f05719d84ab12.sample"]
 
 [params]
 

@@ -1,21 +1,9 @@
 [gd_scene format=3 uid="uid://665xg2j52hd3"]
 
 [ext_resource type="Script" uid="uid://ommnwkrqe3m4" path="res://00_global/player_hud/player_hud.gd" id="1_hv14i"]
-
-[sub_resource type="Gradient" id="Gradient_vb1bs"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4v7s"]
-gradient = SubResource("Gradient_vb1bs")
-height = 6
-
-[sub_resource type="Gradient" id="Gradient_26715"]
-offsets = PackedFloat32Array(0, 0.99734044, 1)
-colors = PackedColorArray(0.7529412, 0, 0, 1, 0.7529412, 0, 0, 1, 0.7529412, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_yf5fn"]
-gradient = SubResource("Gradient_26715")
-height = 6
+[ext_resource type="Texture2D" uid="uid://dtwvmqrlb5wsa" path="res://assets/hud/underbar3.png" id="2_tdgrf"]
+[ext_resource type="Texture2D" uid="uid://bp6hxcjgovp7t" path="res://assets/hud/mbarover.png" id="3_4jtec"]
+[ext_resource type="Texture2D" uid="uid://kieggv6ve75b" path="res://assets/hud/mbarprogress.png" id="4_maesk"]
 
 [node name="PlayerHUD" type="CanvasLayer" unique_id=139045651]
 process_mode = 3
@@ -59,5 +47,6 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 value = 100.0
-texture_under = SubResource("GradientTexture2D_g4v7s")
-texture_progress = SubResource("GradientTexture2D_yf5fn")
+texture_under = ExtResource("2_tdgrf")
+texture_over = ExtResource("3_4jtec")
+texture_progress = ExtResource("4_maesk")

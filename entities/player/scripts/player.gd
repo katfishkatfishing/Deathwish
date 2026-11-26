@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var move_speed: float = 150.0
 @onready var max_fall_velocity: float = 600.0
 
-const DEBUG_JUMP_INDICATOR = preload("res://player/debug_jump_indicator.tscn")
+const DEBUG_JUMP_INDICATOR = preload("res://entities/player/debug_jump_indicator.tscn")
 
 # state machine variables
 var states: Array[PlayerState] = []
@@ -38,7 +38,7 @@ var gravity_multiplier: float = 1.0
 var hp: float = 100.0:
 	set(value):
 		hp = clampf(value, 0.0, max_hp)
-		Messages.player_health_changed_emit(hp, max_hp)
+		Messages.player_health_changed.emit(hp, max_hp)
 
 var max_hp: float = 100.0:
 	set(value):

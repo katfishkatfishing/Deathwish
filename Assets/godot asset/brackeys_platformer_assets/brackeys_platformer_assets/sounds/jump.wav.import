@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://c0m0lda6ofjge"
-path="res://.godot/imported/jump.wav-3e280f14b16ef25b7ae89f39fa0a2238.sample"
+uid="uid://l4fffushlglk"
+path="res://.godot/imported/jump.wav-72818198dd2297c997ebc86fbc861c4e.sample"
 
 [deps]
 
-source_file="res://Assets/godot asset/brackeys_platformer_assets/brackeys_platformer_assets/sounds/jump.wav"
-dest_files=["res://.godot/imported/jump.wav-3e280f14b16ef25b7ae89f39fa0a2238.sample"]
+source_file="res://assets/godot asset/brackeys_platformer_assets/brackeys_platformer_assets/sounds/jump.wav"
+dest_files=["res://.godot/imported/jump.wav-72818198dd2297c997ebc86fbc861c4e.sample"]
 
 [params]
 

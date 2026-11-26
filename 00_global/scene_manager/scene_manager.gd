@@ -12,6 +12,8 @@ func _ready() -> void:
 	fade.visible = false
 	#load before signal completion
 	await get_tree().process_frame
+	if get_tree().current_scene:
+		current_scene_uid = ResourceUID.path_to_uid(get_tree().current_scene.scene_file_path)
 	load_scene_finished.emit()
 	
 func transition_scene(new_scene: String, target_area:String, player_offset: Vector2, dir: String) -> void:

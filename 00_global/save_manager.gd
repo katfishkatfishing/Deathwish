@@ -1,6 +1,6 @@
 extends Node
 
-const SLOTS: Array[String] = ["save_01", "save_02,", "save_03"]
+const SLOTS: Array[String] = ["save_01", "save_02", "save_03"]
 
 var current_slot: int = 0
 var save_data: Dictionary = {}
@@ -8,6 +8,9 @@ var discovered_areas: Array = []
 var persistent_data: Dictionary = {}
 
 var new_game_scene: String = "res://levels/00_dungeon/01.tscn"
+
+func _ready() -> void:
+	SceneManager.scene_entered.connect(on_scene_entered)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
@@ -24,7 +27,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			current_slot = 2
 
 func get_file_name(slot: int = current_slot) -> String:
-	return "user://" + SLOTS[current_slot] + ".sav"
+	return "user://" + SLOTS[slot] + ".sav"
 	
 func save_file_exists(slot: int) -> bool:
 	return FileAccess.file_exists(get_file_name(slot))
@@ -37,12 +40,10 @@ func create_new_game_save(slot: int) -> void:
 	
 	save_data = {
 		"scene_path": new_game_scene,
-		"x": 60.0,
-		"y": 230.0,
 		"hp": 100.0,
 		"max_hp": 100.0,
 		"dash": false,
-		"dounle_jump": false,
+		"double_jump": false,
 		"ground_slam": false,
 		"discovered_areas": discovered_areas,
 		"persistent_data": persistent_data
@@ -58,7 +59,7 @@ func save_game() -> void:
 	save_data = {
 		"scene_path": SceneManager.current_scene_uid,
 		"x": player.global_position.x,
-		"y": player.global_position_y,
+		"y": player.global_position.y,
 		"hp": player.hp,
 		"max_hp": player.max_hp,
 		"dash": player.dash,
@@ -76,6 +77,7 @@ func write_to_file() -> void:
 		save_file.store_line(json_string)
 		
 func load_game(slot: int = current_slot) -> void:
+	current_slot = slot
 	if not FileAccess.file_exists(get_file_name()):
 		return
 	
@@ -84,7 +86,10 @@ func load_game(slot: int = current_slot) -> void:
 		return
 	
 	var json_string: String = save_file.get_line()
-	save_data = JSON.parse_string(json_string)
+	var parsed = JSON.parse_string(json_string)
+	if not parsed is Dictionary:
+		return
+	save_data = parsed
 	
 	persistent_data = save_data.get("persistent_data", {})
 	discovered_areas = save_data.get("discovered_areas", [])
@@ -97,18 +102,31 @@ func load_game(slot: int = current_slot) -> void:
 	
 func setup_player() -> void:
 	var player: Player = null
+	
 	while player == null:
 		await get_tree().process_frame
 		player = get_tree().get_first_node_in_group("player")
 		
-		player.max_hp = save_data.get("max_hp", 100.0)
-		player.hp = save_data.get("hp", 100.0)
-		
-		player.dash = save_data.get("dash", false)
-		player.double_jump = save_data.get("double_jump", false)
-		player.ground_slam = save_data.get("ground_slam", false)
-		
+	player.max_hp = save_data.get("max_hp", 100.0)
+	player.hp = save_data.get("hp", 100.0)
+	
+	player.dash = save_data.get("dash", false)
+	player.double_jump = save_data.get("double_jump", false)
+	player.ground_slam = save_data.get("ground_slam", false)
+	
+	if save_data.has("x") and save_data.has("y"):
 		player.global_position = Vector2(
-			save_data.get("x", 0.0),
-			save_data.get("y", 0.0)
+			save_data.get["x"],
+			save_data.get["y"]
 		)
+
+func on_scene_entered(scene_uid: String) -> void:
+	if not discovered_areas.has(scene_uid):
+		discovered_areas.append(scene_uid)
+
+func set_persistent_value(key: String, value: Variant) -> void:
+	persistent_data[key] = value
+
+func get_persistent_value(key: String, default: Variant = null) -> Variant:
+	return persistent_data.get(key, default)
+	

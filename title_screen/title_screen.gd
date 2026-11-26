@@ -64,8 +64,8 @@ func show_new_game_menu() -> void:
 	
 func show_load_game_menu() -> void:
 	main_menu.visible = false
-	new_game_menu.visible = true
-	load_game_menu.visible = false
+	new_game_menu.visible = false
+	load_game_menu.visible = true
 	new_slot_01.grab_focus()
 	
 	load_slot_01.disabled = not SaveManager.save_file_exists(0)
