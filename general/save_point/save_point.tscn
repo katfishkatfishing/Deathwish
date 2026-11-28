@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://10nulsm6ljeg" path="res://general/save_point/save_point.gd" id="1_a0gwv"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8soah"]
+size = Vector2(32, 48)
+
 [sub_resource type="Gradient" id="Gradient_f82ql"]
 colors = PackedColorArray(0.9882353, 0, 0.3529412, 1, 1, 1, 1, 1)
 
@@ -12,11 +15,98 @@ height = 256
 fill = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(32, 48)
+
+[sub_resource type="Animation" id="Animation_a0gwv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f82ql"]
+resource_name = "game_saved"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.3922923, 0.3922923, 0.21763775),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.46666667), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.75, 2),
+"transitions": PackedFloat32Array(1, 0.6597539, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5y7y7"]
+_data = {
+&"RESET": SubResource("Animation_a0gwv"),
+&"game_saved": SubResource("Animation_f82ql")
+}
 
 [node name="SavePoint" type="Node2D" unique_id=1307582332]
 script = ExtResource("1_a0gwv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=641197324]
+texture = SubResource("PlaceholderTexture2D_8soah")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1600172225]
 texture = SubResource("GradientTexture2D_57qmd")
@@ -30,14 +120,15 @@ monitorable = false
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="MessageRoot" type="Node2D" parent="." unique_id=8346582]
-position = Vector2(0, 1)
+position = Vector2(-31, -45)
 
 [node name="Label" type="Label" parent="MessageRoot" unique_id=359437045]
 visible = false
-offset_right = 40.0
+offset_right = 65.0
 offset_bottom = 23.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
 text = "Game Saved"
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MessageRoot" unique_id=949373556]
+libraries/ = SubResource("AnimationLibrary_5y7y7")

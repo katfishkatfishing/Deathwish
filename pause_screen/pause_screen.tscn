@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://dn0sve3y66a3e"]
+
+[ext_resource type="Script" uid="uid://b3xd8m105hm4n" path="res://pause_screen/pause_screen.gd" id="1_1j2cm"]
+
+[node name="PauseScreen" type="CanvasLayer" unique_id=16217996]
+script = ExtResource("1_1j2cm")
+
+[node name="UIContainer" type="Control" parent="." unique_id=359711451]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=321896223]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10980392, 0.10980392, 0.10980392, 0.23137255)
+
+[node name="PauseMenu" type="VBoxContainer" parent="." unique_id=1607856092]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LogoContainer" type="Control" parent="PauseMenu" unique_id=1854436395]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/LogoContainer" unique_id=2131580111]
+position = Vector2(0, -270)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu/LogoContainer" unique_id=1024773783]
+root_node = NodePath("../..")
+
+[node name="ResumeGameButton" type="Button" parent="PauseMenu" unique_id=826981125]
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+size_flags_stretch_ratio = 1.95
+text = "Resume Game"
+
+[node name="QuitGameButton" type="Button" parent="PauseMenu" unique_id=2108145603]
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "Quit Game"
+
+[node name="ConfirmationMenu" type="VBoxContainer" parent="." unique_id=1689218793]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="YesButton" type="Button" parent="ConfirmationMenu" unique_id=674133614]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="ConfirmationMenu" unique_id=630513755]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 2
+text = "No"

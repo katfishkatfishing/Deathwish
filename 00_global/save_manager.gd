@@ -116,8 +116,8 @@ func setup_player() -> void:
 	
 	if save_data.has("x") and save_data.has("y"):
 		player.global_position = Vector2(
-			save_data.get["x"],
-			save_data.get["y"]
+			save_data["x"],
+			save_data["y"]
 		)
 
 func on_scene_entered(scene_uid: String) -> void:

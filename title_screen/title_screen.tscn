@@ -30,46 +30,67 @@ color = Color(0.18453678, 0.009959008, 0.017224107, 1)
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -120.0
-offset_right = 100.0
 grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="UIContainer/MainMenu" unique_id=700259560]
-position = Vector2(98.69229, -72.7251)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UIContainer/MainMenu" unique_id=540041648]
+grow_vertical = 2
 
 [node name="NewGameButton" type="Button" parent="UIContainer/MainMenu" unique_id=1867498481]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+size_flags_stretch_ratio = 1.8
 text = "New Game"
 
 [node name="LoadGameButton" type="Button" parent="UIContainer/MainMenu" unique_id=2025884953]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
 offset_transform_enabled = true
 text = "Load Game"
 
 [node name="LogoContainer" type="Control" parent="UIContainer/MainMenu" unique_id=847018733]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="UIContainer/MainMenu/LogoContainer" unique_id=1165333470]
+position = Vector2(0, -187)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UIContainer/MainMenu/LogoContainer" unique_id=97020739]
+
+[node name="Label" type="Label" parent="UIContainer/MainMenu/LogoContainer" unique_id=348009826]
+layout_mode = 0
+offset_left = -52.0
+offset_top = -200.0
+offset_right = 56.0
+offset_bottom = -172.0
+theme_override_font_sizes/font_size = 32
+text = "Deathwish"
+horizontal_alignment = 1
 
 [node name="NewGameMenu" type="VBoxContainer" parent="UIContainer" unique_id=348860210]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = -53.0
+offset_right = 49.5
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="UIContainer/NewGameMenu" unique_id=54927495]
 layout_mode = 2
@@ -99,9 +120,18 @@ text = "Begin Slot 3"
 [node name="LoadGameMenu" type="VBoxContainer" parent="UIContainer" unique_id=668552246]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = -48.0
+offset_right = 52.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="UIContainer/LoadGameMenu" unique_id=1504499878]
 layout_mode = 2

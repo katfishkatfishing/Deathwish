@@ -3,31 +3,32 @@ extends Node2D
 
 # map button actions to the icon
 const HINT_MAP: Dictionary = {
-	"keyboard": {
-		"interact": 12, # S
-		"attack": 10, # X
-		"jump": 9, # Z
-		"dash": 11, # C
-		"up": 13
-	},
+	"interact": "action", # S
+	"attack": "attack", # X
+	"jump": "jump", # Z
+	"dash": "dash", # C
+	"up": "up"
+}
+
+const CONTROLLER_ACTION: Dictionary = {
 	"playstation": {
-		"interact": 0,#triangle
-		"jump": 1, #cross
-		"attack": 2, #square
-		"dash": 3, #circle
-		"up": 4
+		"interact": "Triangle",#triangle
+		"jump": "Cross", #cross
+		"attack": "Square", #square
+		"dash": "Circle", #circle
+		"up": "Up"
 	},
 	"xbox": {
-		"interact": 8, # Y
-		"jump": 5, # A
-		"attack": 7, # X
-		"dash": 6, # B
-		"up": 4
+		"interact": "Y", # Y
+		"jump": "A", # A
+		"attack": "X", # X
+		"dash": "B", # B
+		"up": "Up"
 	}
 }
 
 var controller_type: String = "keyboard"
-@onready var sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
+@onready var label: Label = $Label
 
 func _ready() -> void:
 	visible = false
@@ -55,5 +56,16 @@ func on_hint_changed(hint: String) -> void:
 		return
 		
 	visible = true
-	var current_map: Dictionary = HINT_MAP.get(controller_type, HINT_MAP["keyboard"])
-	sprite_2d.frame = current_map.get(hint, 0)
+	if controller_type == "keyboard":
+		label.text = "[" + get_keyboard_key(hint) + "]"
+	else:
+		var current_map: Dictionary = CONTROLLER_ACTION.get(controller_type, CONTROLLER_ACTION["xbox"])
+		label.text = "[" + current_map.get(hint, "?") + "]"
+
+func get_keyboard_key(hint: String) -> String:
+	var action_name: String = HINT_MAP.get(hint, hint)
+	var events: Array[InputEvent] = InputMap.action_get_events(action_name)
+	for event in events:
+		if event is InputEventKey:
+			return OS.get_keycode_string(event.physical_keycode if event.physical_keycode != 0 else event.keycode)
+	return action_name.to_upper()
