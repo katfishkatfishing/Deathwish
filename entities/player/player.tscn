@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c1ag7qpsli2np" path="res://entities/player/scripts/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://cgepdvl2o88bw" path="res://entities/player/states/player_states_idle.gd" id="2_g1dw6"]
-[ext_resource type="Texture2D" uid="uid://dhxmtl34w4vm0" path="res://assets/sprites/player.png" id="2_rgyib"]
+[ext_resource type="Texture2D" uid="uid://dhxmtl34w4vm0" path="res://Assets/sprites/player.png" id="2_rgyib"]
 [ext_resource type="Script" uid="uid://cbfde3s8ds3fv" path="res://entities/player/states/player_state_run.gd" id="3_yw30f"]
 [ext_resource type="Script" uid="uid://bn2y73e4nnlv1" path="res://entities/player/states/player_state_jump.gd" id="4_yw30f"]
 [ext_resource type="Script" uid="uid://dfqa4sgorvh51" path="res://entities/player/states/player_state_fall.gd" id="5_qjkh3"]
@@ -322,7 +322,7 @@ height = 43.0
 radius = 5.5
 height = 22.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1882587580 groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1481464361 groups=["can_trigger_platform", "player"]]
 collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_oul6g")

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kieggv6ve75b"
-path="res://.godot/imported/mbarprogress.png-e9c06bc19e2d4a43c34c20cd35af5dbb.ctex"
+path="res://.godot/imported/mbarprogress.png-2b4f5082dcd76821d6326b608188d0b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/hud/mbarprogress.png"
-dest_files=["res://.godot/imported/mbarprogress.png-e9c06bc19e2d4a43c34c20cd35af5dbb.ctex"]
+source_file="res://Assets/hud/mbarprogress.png"
+dest_files=["res://.godot/imported/mbarprogress.png-2b4f5082dcd76821d6326b608188d0b3.ctex"]
 
 [params]
 
