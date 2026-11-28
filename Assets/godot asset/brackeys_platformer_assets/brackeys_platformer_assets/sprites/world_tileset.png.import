@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfihmcy20nlj3"
-path="res://.godot/imported/world_tileset.png-076403cb91040bd189da3e53364b15a5.ctex"
+path="res://.godot/imported/world_tileset.png-e02cd03b7008eadf21c10790e852bc5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/godot asset/brackeys_platformer_assets/brackeys_platformer_assets/sprites/world_tileset.png"
-dest_files=["res://.godot/imported/world_tileset.png-076403cb91040bd189da3e53364b15a5.ctex"]
+source_file="res://Assets/godot asset/brackeys_platformer_assets/brackeys_platformer_assets/sprites/world_tileset.png"
+dest_files=["res://.godot/imported/world_tileset.png-e02cd03b7008eadf21c10790e852bc5b.ctex"]
 
 [params]
 

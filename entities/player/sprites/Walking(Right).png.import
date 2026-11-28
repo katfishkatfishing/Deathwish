@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4238n5jqx232"
-path="res://.godot/imported/Dash(Right).png-9397ebe2593fcf3c06d184fe81145103.ctex"
+uid="uid://4h5u3wy1ngbs"
+path="res://.godot/imported/Walking(Right).png-2137b203c8974832ab10f628d8505327.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/sprites/Dash(Right).png"
-dest_files=["res://.godot/imported/Dash(Right).png-9397ebe2593fcf3c06d184fe81145103.ctex"]
+source_file="res://entities/player/sprites/Walking(Right).png"
+dest_files=["res://.godot/imported/Walking(Right).png-2137b203c8974832ab10f628d8505327.ctex"]
 
 [params]
 

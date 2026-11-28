@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chyhkt80mjhh"
-path="res://.godot/imported/JumpingFalling(Left).png-5552b28e64f4fb6a955a94e6c64d9f35.ctex"
+uid="uid://io02vftrl5at"
+path="res://.godot/imported/Idle(Right).png-66f8cc744793f6f1896448496a63b918.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/sprites/JumpingFalling(Left).png"
-dest_files=["res://.godot/imported/JumpingFalling(Left).png-5552b28e64f4fb6a955a94e6c64d9f35.ctex"]
+source_file="res://entities/player/sprites/Idle(Right).png"
+dest_files=["res://.godot/imported/Idle(Right).png-66f8cc744793f6f1896448496a63b918.ctex"]
 
 [params]
 

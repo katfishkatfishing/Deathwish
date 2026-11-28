@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4h5u3wy1ngbs"
-path="res://.godot/imported/Walking(Right).png-c4680f6814654993312849cdd46d131a.ctex"
+uid="uid://dh5imxibccaxu"
+path="res://.godot/imported/Idle(Left).png-0276ecd5fcaef627969ae5be540b9f17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/sprites/Walking(Right).png"
-dest_files=["res://.godot/imported/Walking(Right).png-c4680f6814654993312849cdd46d131a.ctex"]
+source_file="res://entities/player/sprites/Idle(Left).png"
+dest_files=["res://.godot/imported/Idle(Left).png-0276ecd5fcaef627969ae5be540b9f17.ctex"]
 
 [params]
 
